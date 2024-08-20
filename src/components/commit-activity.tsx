@@ -1,16 +1,15 @@
 import { FC } from "react";
 import { WeekActivity, WeekActivityProps } from "./week-activity";
-import { useDensityRules } from "../hooks/use-density-rules";
+import { useDensityRules } from "@/src/hooks/use-density-rules";
 import { fromUnixTime } from "date-fns/fromUnixTime";
-import { format } from "date-fns/format";
-import { addDays } from "date-fns/addDays";
 import { subDays } from "date-fns/subDays";
 import clsx from "clsx";
 import { bgByDensity } from "./day-activity";
+import { CommitActivity as TCommitActivity } from "@/src/hooks/use-commit-activity";
 
-interface CommitActivityProps {
-  commitActivity: WeekActivityProps["commitActivity"][];
-}
+type CommitActivityProps = {
+  commitActivity: TCommitActivity[];
+};
 
 export const CommitActivity: FC<CommitActivityProps> = ({ commitActivity }) => {
   const densityRules = useDensityRules(commitActivity);

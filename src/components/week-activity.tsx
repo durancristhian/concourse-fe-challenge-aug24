@@ -1,21 +1,17 @@
 import { FC } from "react";
 import { DayActivity, DayActivityProps } from "./day-activity";
-import { DensityRulesResult } from "../hooks/use-density-rules";
+import { DensityRules } from "@/src/hooks/use-density-rules";
 import { fromUnixTime } from "date-fns/fromUnixTime";
 import { addDays } from "date-fns/addDays";
 import { isAfter } from "date-fns/isAfter";
 import { format } from "date-fns/format";
+import { CommitActivity } from "@/src/hooks/use-commit-activity";
 
-export interface WeekActivityProps {
-  /* TODO: better name? */
-  commitActivity: {
-    total: number;
-    week: number;
-    days: number[];
-  };
-  densityRules: DensityRulesResult;
+export type WeekActivityProps = {
+  commitActivity: CommitActivity;
+  densityRules: DensityRules;
   showMonthLabel: boolean;
-}
+};
 
 export const WeekActivity: FC<WeekActivityProps> = ({
   commitActivity,

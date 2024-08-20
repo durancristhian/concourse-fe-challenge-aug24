@@ -1,6 +1,6 @@
-import { WeekActivityProps } from "../components/week-activity";
+import { WeekActivityProps } from "@/src/components/week-activity";
 
-export type DensityRulesResult = {
+export type DensityRules = {
   darkest: number;
   darker: number;
   base: number;
@@ -10,10 +10,9 @@ export type DensityRulesResult = {
 
 type UseDensityRules = (
   commitActivity: WeekActivityProps["commitActivity"][]
-) => DensityRulesResult;
+) => DensityRules;
 
 export const useDensityRules: UseDensityRules = (commitActivity) => {
-  /* TODO: research the need for the number[] type */
   const commitActivities = commitActivity.reduce<number[]>(
     (acc, curr) => [...acc, ...curr.days],
     []

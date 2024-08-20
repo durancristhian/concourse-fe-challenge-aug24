@@ -1,15 +1,15 @@
 import { FC } from "react";
-import { DensityRulesResult } from "../hooks/use-density-rules";
+import { DensityRules } from "@/src/hooks/use-density-rules";
 import clsx from "clsx";
 import { format } from "date-fns/format";
 
-export interface DayActivityProps {
+export type DayActivityProps = {
   commits: number;
-  density: keyof DensityRulesResult;
+  density: keyof DensityRules;
   date: Date;
-}
+};
 
-export const bgByDensity: Record<keyof DensityRulesResult, string> = {
+export const bgByDensity: Record<keyof DensityRules, string> = {
   darkest: "bg-green-900",
   darker: "bg-green-600",
   base: "bg-green-400",
