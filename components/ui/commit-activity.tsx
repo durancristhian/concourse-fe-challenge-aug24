@@ -19,6 +19,7 @@ export const CommitActivity: FC<CommitActivityProps> = ({ commitActivity }) => {
       <div className="flex justify-center gap-2">
         <div className="flex flex-col gap-2">
           <div className="h-4 w-6"></div>
+          <div className="h-4 w-6"></div>
           <div className="h-4 w-6">
             <p className="text-xs">Mon</p>
           </div>
