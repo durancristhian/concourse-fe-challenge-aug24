@@ -1,4 +1,4 @@
-import { WeekActivityProps } from "@/src/components/week-activity";
+import { WeekActivityProps } from "@/components/ui/week-activity";
 
 export type DensityRules = {
   darkest: number;

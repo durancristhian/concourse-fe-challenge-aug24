@@ -1,5 +1,5 @@
-import { CommitActivity } from "@/src/components/commit-activity";
-import { useCommitActivity } from "@/src/hooks/use-commit-activity";
+import { CommitActivity } from "@/components/ui/commit-activity";
+import { useCommitActivity } from "@/components/hooks/use-commit-activity";
 
 export default function Page() {
   const commitActivity = useCommitActivity();

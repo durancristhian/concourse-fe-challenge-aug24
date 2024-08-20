@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { DensityRules } from "@/src/hooks/use-density-rules";
+import { DensityRules } from "@/components/hooks/use-density-rules";
 import clsx from "clsx";
 import { format } from "date-fns/format";
 

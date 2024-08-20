@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { WeekActivity, WeekActivityProps } from "./week-activity";
-import { useDensityRules } from "@/src/hooks/use-density-rules";
+import { useDensityRules } from "@/components/hooks/use-density-rules";
 import { fromUnixTime } from "date-fns/fromUnixTime";
 import { subDays } from "date-fns/subDays";
 import clsx from "clsx";
 import { bgByDensity } from "./day-activity";
-import { CommitActivity as TCommitActivity } from "@/src/hooks/use-commit-activity";
+import { CommitActivity as TCommitActivity } from "@/components/hooks/use-commit-activity";
 
 type CommitActivityProps = {
   commitActivity: TCommitActivity[];
