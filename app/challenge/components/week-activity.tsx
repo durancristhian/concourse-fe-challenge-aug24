@@ -1,6 +1,10 @@
 import { FC } from "react";
 import { DayActivity, DayActivityProps } from "./day-activity";
 import { DensityRulesResult } from "../hooks/use-density-rules";
+import { fromUnixTime } from "date-fns/fromUnixTime";
+import { addDays } from "date-fns/addDays";
+import { isAfter } from "date-fns/isAfter";
+import { format } from "date-fns/format";
 
 export interface WeekActivityProps {
   /* TODO: better name? */
@@ -10,11 +14,13 @@ export interface WeekActivityProps {
     days: number[];
   };
   densityRules: DensityRulesResult;
+  showMonthLabel: boolean;
 }
 
 export const WeekActivity: FC<WeekActivityProps> = ({
   commitActivity,
   densityRules,
+  showMonthLabel,
 }) => {
   const getDensity = (commits: number): DayActivityProps["density"] => {
     if (commits < densityRules.lighter) return "lightest";
@@ -24,15 +30,33 @@ export const WeekActivity: FC<WeekActivityProps> = ({
     return "darkest";
   };
 
+  const startDate = fromUnixTime(commitActivity.week);
+  const tomorrow = addDays(new Date(), 1);
+
   return (
-    <div className="flex flex-col gap-2 p-1">
-      {commitActivity.days.map((commits, idx) => (
-        <DayActivity
-          key={idx}
-          commits={commits}
-          density={getDensity(commits)}
-        />
-      ))}
+    <div className="flex flex-col gap-2">
+      <div className="h-4 w-4">
+        <p className="text-xs">
+          {showMonthLabel ? format(startDate, "MMM") : ""}
+        </p>
+      </div>
+      {commitActivity.days.map((commits, idx) => {
+        const date = addDays(startDate, idx);
+
+        /* We don't render day activity for future days */
+        if (isAfter(date, tomorrow)) {
+          return null;
+        }
+
+        return (
+          <DayActivity
+            key={idx}
+            commits={commits}
+            density={getDensity(commits)}
+            date={date}
+          />
+        );
+      })}
     </div>
   );
 };
