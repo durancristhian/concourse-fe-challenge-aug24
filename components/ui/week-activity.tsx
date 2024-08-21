@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { ActivityBox, ActivityBoxProps } from "./activity-box";
 import { DensityRules } from "@/components/hooks/use-density-rules";
-import { fromUnixTime } from "date-fns/fromUnixTime";
 import { addDays } from "date-fns/addDays";
 import { isAfter } from "date-fns/isAfter";
 import { format } from "date-fns/format";

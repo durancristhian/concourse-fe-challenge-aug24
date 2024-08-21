@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { WeekActivity, WeekActivityProps } from "./week-activity";
 import { useDensityRules } from "@/components/hooks/use-density-rules";
-import { fromUnixTime } from "date-fns/fromUnixTime";
 import { subDays } from "date-fns/subDays";
 import { CommitActivity as TCommitActivity } from "@/components/hooks/use-commit-activity";
 import { ActivityBox } from "./activity-box";
@@ -16,29 +15,30 @@ export const CommitActivityGraph: FC<CommitActivityProps> = ({
   const densityRules = useDensityRules(commitActivity);
 
   return (
-    /* TODO: This has a bug */
-    <div className="overflow-x-auto">
-      <div className="flex justify-center gap-2">
-        <DayLabels />
-        {commitActivity.map((activity, idx) => {
-          const previousWeek = subDays(activity.week, 7);
+    <>
+      <div className="mb-4 overflow-x-auto pb-4">
+        <div className="flex gap-2">
+          <DayLabels />
+          {commitActivity.map((activity, idx) => {
+            const previousWeek = subDays(activity.week, 7);
 
-          /* We show the month label when in the first week of the graph or when we have a different month */
-          const showMonthLabel =
-            !idx || activity.week.getMonth() !== previousWeek.getMonth();
+            /* We show the month label when in the first week of the graph or when we have a different month */
+            const showMonthLabel =
+              !idx || activity.week.getMonth() !== previousWeek.getMonth();
 
-          return (
-            <WeekActivity
-              key={idx}
-              activity={activity}
-              densityRules={densityRules}
-              showMonthLabel={showMonthLabel}
-            />
-          );
-        })}
+            return (
+              <WeekActivity
+                key={idx}
+                activity={activity}
+                densityRules={densityRules}
+                showMonthLabel={showMonthLabel}
+              />
+            );
+          })}
+        </div>
       </div>
       <ChartFooter />
-    </div>
+    </>
   );
 };
 
@@ -66,7 +66,7 @@ const DayLabels: FC = () => {
 
 const ChartFooter: FC = () => {
   return (
-    <div className="flex gap-2 justify-center mt-8">
+    <div className="flex gap-2 justify-center">
       <p className="text-xs">Less</p>
       <ActivityBox density="lightest" />
       <ActivityBox density="lighter" />

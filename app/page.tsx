@@ -9,7 +9,9 @@ export default function Page() {
       <h1 className="font-bold text-2xl text-center">
         Concourse FE Challenge by Cristhian Duran
       </h1>
-      <CommitActivityGraph commitActivity={commitActivity} />
+      <div>
+        <CommitActivityGraph commitActivity={commitActivity} />
+      </div>
       <p className="text-base text-center">
         Repo can be found at{" "}
         <a
