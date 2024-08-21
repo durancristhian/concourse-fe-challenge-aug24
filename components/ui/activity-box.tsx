@@ -17,8 +17,11 @@ export type ActivityBoxProps = PropsWithChildren<{
 export const ActivityBox: FC<ActivityBoxProps> = ({ children, density }) => {
   return (
     <div
-      className={clsx("h-4 w-4 rounded", bgByDensity[density])}
-      /* Note: I think this toString() is fine for now since I don't have a proper Tooltip component. */
+      className={clsx(
+        "h-4 hover:cursor-pointer hover:scale-125 rounded transition-transform w-4",
+        bgByDensity[density]
+      )}
+      /* This is not great but ok for now until I create a tooltip component. */
       title={children?.toString()}
     />
   );
