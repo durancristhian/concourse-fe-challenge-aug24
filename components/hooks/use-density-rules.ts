@@ -10,14 +10,15 @@ export type DensityRules = {
 
 type UseDensityRules = (commitActivity: CommitActivity[]) => DensityRules;
 
+/* This hook gets the commit activity from a repo and returns the proper density rules to measure each commit activity day. */
 export const useDensityRules: UseDensityRules = (commitActivity) => {
-  /* We accumulate in a single array all the commit activity per days */
+  /* We accumulate in a single array all the commit activity per day */
   const commitActivities = commitActivity.reduce<number[]>(
     (acc, curr) => [...acc, ...curr.days],
     []
   );
 
-  /* We get the max activity day */
+  /* We get the max value out of it */
   const maxCommitActivity = Math.max(...commitActivities);
 
   const getThreshold: (activity: number, percentage: number) => number = (
@@ -25,6 +26,7 @@ export const useDensityRules: UseDensityRules = (commitActivity) => {
     percentage
   ) => Math.floor(activity * percentage);
 
+  /* The percentages in comments below were calculated at a quick glance for me based on the challenge requirements. */
   return {
     /* +52% */
     darkest: getThreshold(maxCommitActivity, 0.52),

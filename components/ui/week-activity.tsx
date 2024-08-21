@@ -17,7 +17,7 @@ export const WeekActivity: FC<WeekActivityProps> = ({
   densityRules,
   showMonthLabel,
 }) => {
-  /* TODO: move this somewhere else to unit test it */
+  /* NOTE: I think this small bussiness logic fn could be a util but I'll keep it here. I'd def move it out of this component if I write unit tests. */
   const getDensity: (commits: number) => ActivityBoxProps["density"] = (
     commits
   ) => {
@@ -40,17 +40,14 @@ export const WeekActivity: FC<WeekActivityProps> = ({
       {activity.days.map((commits, idx) => {
         const date = addDays(activity.week, idx);
 
-        /* We don't render day activity for future days */
+        /* We don't render the activity box for future days */
         if (isAfter(date, tomorrow)) {
           return null;
         }
 
         return (
           <ActivityBox key={idx} density={getDensity(commits)}>
-            {/*
-              - Since this is the only place where I need pluralization, I won't install any external library
-              - children here will end up being the tooltip
-            */}
+            {/* NOTE: Since this is the only place where I need pluralization, I won't install any external library */}
             {`${commits || "No"} contribution${
               commits !== 1 ? "s" : ""
             } on ${format(date, "PPPP")}`}

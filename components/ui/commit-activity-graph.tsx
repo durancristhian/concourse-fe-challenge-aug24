@@ -19,6 +19,7 @@ export const CommitActivityGraph: FC = () => {
   const densityRules = useDensityRules(commitActivity);
 
   if (loading) {
+    /* Note: Ideally, this would be a separated component. */
     return (
       <p className="text-base italic">
         Loading commit activity for{" "}
@@ -28,6 +29,7 @@ export const CommitActivityGraph: FC = () => {
   }
 
   if (error) {
+    /* Note: Ideally, this would be a separated component. */
     return (
       <p className="font-bold text-base text-red-800">
         An error has ocurred. Try again in a few minutes since you could be rate
@@ -47,7 +49,7 @@ export const CommitActivityGraph: FC = () => {
           {commitActivity.map((activity, idx) => {
             const previousWeek = subDays(activity.week, 7);
 
-            /* We show the month label when in the first week of the graph or when we have a different month */
+            /* We show the month label when in the first rendered week of the graph OR when we have a different month in comparison with the previous one. */
             const showMonthLabel =
               !idx || activity.week.getMonth() !== previousWeek.getMonth();
 
@@ -67,7 +69,7 @@ export const CommitActivityGraph: FC = () => {
   );
 };
 
-/* Don't think these components deserve their own specific file */
+/* I don't think these components deserve their own specific file. */
 const DayLabels: FC = () => {
   return (
     <div className="flex flex-col gap-2">

@@ -7,6 +7,7 @@ export default function Page() {
         Concourse FE Challenge by Cristhian Duran
       </h1>
       <div>
+        {/* This is where the magic happens: the rest is just boilerplate. */}
         <CommitActivityGraph />
       </div>
       <p className="text-base">
@@ -15,7 +16,7 @@ export default function Page() {
           href="https://github.com/durancristhian/concourse-fe-challenge-aug24"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-bold text-blue-500 underline"
+          className="text-blue-500 underline"
         >
           durancristhian/concourse-fe-challenge-aug24
         </a>

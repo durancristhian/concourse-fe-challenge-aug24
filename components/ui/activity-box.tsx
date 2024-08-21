@@ -22,6 +22,7 @@ export const ActivityBox: FC<ActivityBoxProps> = ({ children, density }) => {
         className={clsx(
           "h-4 rounded transition-transform w-4",
           bgByDensity[density],
+          /* In the ChartFooter component we don't pass any children, that's why we conditionally apply these classes. */
           children && "hover:cursor-pointer hover:scale-125"
         )}
       />
