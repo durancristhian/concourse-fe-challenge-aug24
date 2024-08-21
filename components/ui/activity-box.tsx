@@ -16,13 +16,23 @@ export type ActivityBoxProps = PropsWithChildren<{
 
 export const ActivityBox: FC<ActivityBoxProps> = ({ children, density }) => {
   return (
-    <div
-      className={clsx(
-        "h-4 hover:cursor-pointer hover:scale-125 rounded transition-transform w-4",
-        bgByDensity[density]
-      )}
-      /* This is not great but ok for now until I create a tooltip component. */
-      title={children?.toString()}
-    />
+    <div className="group">
+      <div
+        className={clsx(
+          "h-4 rounded transition-transform w-4",
+          bgByDensity[density],
+          children && "hover:cursor-pointer hover:scale-125"
+        )}
+        data-tooltip-target="tooltip"
+      />
+      {children ? (
+        <div
+          data-tooltip="tooltip"
+          className="absolute bg-gray-800 group-hover:visible invisible ml-4 -mt-2 px-2 py-1 rounded text-gray-200 text-sm z-10"
+        >
+          {children}
+        </div>
+      ) : null}
+    </div>
   );
 };

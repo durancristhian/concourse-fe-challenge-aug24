@@ -15,7 +15,7 @@ export const CommitActivityGraph: FC = () => {
     loading,
     error,
     data: commitActivity,
-  } = useCommitActivity("facebook/react");
+  } = useCommitActivity(USER_AND_REPO);
   const densityRules = useDensityRules(commitActivity);
 
   if (loading) {

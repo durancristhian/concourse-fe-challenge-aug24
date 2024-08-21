@@ -47,9 +47,12 @@ export const WeekActivity: FC<WeekActivityProps> = ({
 
         return (
           <ActivityBox key={idx} density={getDensity(commits)}>
-            {/* children here will end up being the tooltip */}
+            {/*
+              - Since this is the only place where I need pluralization, I won't install any external library
+              - children here will end up being the tooltip
+            */}
             {`${commits || "No"} contribution${
-              commits > 1 ? "s" : ""
+              commits !== 1 ? "s" : ""
             } on ${format(date, "PPPP")}`}
           </ActivityBox>
         );
