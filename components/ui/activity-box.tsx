@@ -1,6 +1,7 @@
-import { FC, PropsWithChildren } from "react";
 import { DensityRules } from "@/components/hooks/use-density-rules";
+import Tippy from "@tippyjs/react";
 import clsx from "clsx";
+import { FC, PropsWithChildren } from "react";
 
 const bgByDensity: Record<keyof DensityRules, string> = {
   darkest: "bg-emerald-700",
@@ -16,23 +17,14 @@ export type ActivityBoxProps = PropsWithChildren<{
 
 export const ActivityBox: FC<ActivityBoxProps> = ({ children, density }) => {
   return (
-    <div className="group">
+    <Tippy content={children}>
       <div
         className={clsx(
           "h-4 rounded transition-transform w-4",
           bgByDensity[density],
           children && "hover:cursor-pointer hover:scale-125"
         )}
-        data-tooltip-target="tooltip"
       />
-      {children ? (
-        <div
-          data-tooltip="tooltip"
-          className="absolute bg-gray-800 group-hover:visible invisible ml-4 -mt-2 px-2 py-1 rounded text-gray-200 text-sm z-10"
-        >
-          {children}
-        </div>
-      ) : null}
-    </div>
+    </Tippy>
   );
 };

@@ -1,11 +1,11 @@
 "use client";
 
-import { FC } from "react";
-import { WeekActivity } from "./week-activity";
+import { useCommitActivity } from "@/components/hooks/use-commit-activity";
 import { useDensityRules } from "@/components/hooks/use-density-rules";
 import { subDays } from "date-fns/subDays";
-import { useCommitActivity } from "@/components/hooks/use-commit-activity";
+import { FC } from "react";
 import { ActivityBox } from "./activity-box";
+import { WeekActivity } from "./week-activity";
 
 /* IDEA: This could be something the user can type so we can make the chart dynamic. */
 const USER_AND_REPO = "facebook/react";

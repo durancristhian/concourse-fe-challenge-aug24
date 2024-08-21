@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { ActivityBox, ActivityBoxProps } from "./activity-box";
+import { CommitActivity } from "@/components/hooks/use-commit-activity";
 import { DensityRules } from "@/components/hooks/use-density-rules";
 import { addDays } from "date-fns/addDays";
-import { isAfter } from "date-fns/isAfter";
 import { format } from "date-fns/format";
-import { CommitActivity } from "@/components/hooks/use-commit-activity";
+import { isAfter } from "date-fns/isAfter";
+import { FC } from "react";
+import { ActivityBox, ActivityBoxProps } from "./activity-box";
 
 export type WeekActivityProps = {
   activity: CommitActivity;

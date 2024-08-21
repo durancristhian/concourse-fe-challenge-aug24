@@ -1,8 +1,9 @@
+import { setDefaultOptions } from "date-fns";
+import { enUS } from "date-fns/locale";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "tippy.js/dist/tippy.css";
 import "./globals.css";
-import { enUS } from "date-fns/locale";
-import { setDefaultOptions } from "date-fns";
 
 setDefaultOptions({ locale: enUS });
 
