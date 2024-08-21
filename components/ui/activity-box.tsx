@@ -8,7 +8,7 @@ const bgByDensity: Record<keyof DensityRules, string> = {
   darker: "bg-emerald-500",
   base: "bg-emerald-400",
   lighter: "bg-emerald-200",
-  lightest: "bg-zinc-200",
+  lightest: "bg-white",
 };
 
 export type ActivityBoxProps = PropsWithChildren<{
@@ -17,10 +17,10 @@ export type ActivityBoxProps = PropsWithChildren<{
 
 export const ActivityBox: FC<ActivityBoxProps> = ({ children, density }) => {
   return (
-    <Tippy content={children}>
+    <Tippy content={children} disabled={!children}>
       <div
         className={clsx(
-          "h-4 rounded transition-transform w-4",
+          "border border-zinc-500 h-4 rounded shadow-inner transition-transform w-4",
           bgByDensity[density],
           /* In the ChartFooter component we don't pass any children, that's why we conditionally apply these classes. */
           children && "hover:cursor-pointer hover:scale-125"

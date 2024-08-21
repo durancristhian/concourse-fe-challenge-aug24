@@ -48,9 +48,9 @@ export const WeekActivity: FC<WeekActivityProps> = ({
         return (
           <ActivityBox key={idx} density={getDensity(commits)}>
             {/* NOTE: Since this is the only place where I need pluralization, I won't install any external library */}
-            {`${commits || "No"} contribution${
+            <p className="italic">{`${commits || "No"} contribution${
               commits !== 1 ? "s" : ""
-            } on ${format(date, "PPPP")}`}
+            } on ${format(date, "PPPP")}`}</p>
           </ActivityBox>
         );
       })}
