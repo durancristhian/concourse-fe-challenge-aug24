@@ -1,22 +1,47 @@
+"use client";
+
 import { FC } from "react";
-import { WeekActivity, WeekActivityProps } from "./week-activity";
+import { WeekActivity } from "./week-activity";
 import { useDensityRules } from "@/components/hooks/use-density-rules";
 import { subDays } from "date-fns/subDays";
-import { CommitActivity as TCommitActivity } from "@/components/hooks/use-commit-activity";
+import { useCommitActivity } from "@/components/hooks/use-commit-activity";
 import { ActivityBox } from "./activity-box";
 
-type CommitActivityProps = {
-  commitActivity: TCommitActivity[];
-};
+/* IDEA: This could be something the user can type so we can make the chart dynamic. */
+const USER_AND_REPO = "facebook/react";
 
-export const CommitActivityGraph: FC<CommitActivityProps> = ({
-  commitActivity,
-}) => {
+export const CommitActivityGraph: FC = () => {
+  const {
+    loading,
+    error,
+    data: commitActivity,
+  } = useCommitActivity("facebook/react");
   const densityRules = useDensityRules(commitActivity);
+
+  if (loading) {
+    return (
+      <p className="text-base italic">
+        Loading commit activity for{" "}
+        <span className="font-bold">{USER_AND_REPO}</span>...
+      </p>
+    );
+  }
+
+  if (error) {
+    return (
+      <p className="font-bold text-base text-red-800">
+        An error has ocurred. Try again in a few minutes since you could be rate
+        limited by the GitHub API.
+      </p>
+    );
+  }
 
   return (
     <>
-      <div className="mb-4 overflow-x-auto pb-4">
+      <h2 className="font-semibold text-xl">
+        Commit activity for {USER_AND_REPO}
+      </h2>
+      <div className="mb-4 overflow-x-auto py-4">
         <div className="flex gap-2">
           <DayLabels />
           {commitActivity.map((activity, idx) => {
@@ -66,7 +91,7 @@ const DayLabels: FC = () => {
 
 const ChartFooter: FC = () => {
   return (
-    <div className="flex gap-2 justify-center">
+    <div className="flex gap-2">
       <p className="text-xs">Less</p>
       <ActivityBox density="lightest" />
       <ActivityBox density="lighter" />
