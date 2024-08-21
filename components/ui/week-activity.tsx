@@ -29,18 +29,17 @@ export const WeekActivity: FC<WeekActivityProps> = ({
     return "darkest";
   };
 
-  const startDateOfTheWeek = fromUnixTime(activity.week);
   const tomorrow = addDays(new Date(), 1);
 
   return (
     <div className="flex flex-col gap-2">
       <div className="h-4 w-4">
         <p className="text-xs">
-          {showMonthLabel ? format(startDateOfTheWeek, "MMM") : ""}
+          {showMonthLabel ? format(activity.week, "MMM") : ""}
         </p>
       </div>
       {activity.days.map((commits, idx) => {
-        const date = addDays(startDateOfTheWeek, idx);
+        const date = addDays(activity.week, idx);
 
         /* We don't render day activity for future days */
         if (isAfter(date, tomorrow)) {

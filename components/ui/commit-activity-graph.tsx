@@ -21,16 +21,15 @@ export const CommitActivityGraph: FC<CommitActivityProps> = ({
       <div className="flex justify-center gap-2">
         <DayLabels />
         {commitActivity.map((activity, idx) => {
-          const startDateOfTheWeek = fromUnixTime(activity.week);
-          const previousWeek = subDays(startDateOfTheWeek, 7);
+          const previousWeek = subDays(activity.week, 7);
 
           /* We show the month label when in the first week of the graph or when we have a different month */
           const showMonthLabel =
-            !idx || startDateOfTheWeek.getMonth() !== previousWeek.getMonth();
+            !idx || activity.week.getMonth() !== previousWeek.getMonth();
 
           return (
             <WeekActivity
-              key={activity.week}
+              key={idx}
               activity={activity}
               densityRules={densityRules}
               showMonthLabel={showMonthLabel}
