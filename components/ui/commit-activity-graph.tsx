@@ -43,7 +43,7 @@ export const CommitActivityGraph: FC = () => {
       <h2 className="font-semibold text-xl">
         Commit activity for {USER_AND_REPO}
       </h2>
-      <div className="mb-4 overflow-x-auto py-4">
+      <div className="my-4 overflow-x-auto pb-2">
         <div className="flex gap-2">
           <DayLabels />
           {commitActivity.map((activity, idx) => {
@@ -73,20 +73,20 @@ export const CommitActivityGraph: FC = () => {
 const DayLabels: FC = () => {
   return (
     <div className="flex flex-col gap-2">
-      <div className="h-4 w-6"></div>
-      <div className="h-4 w-6"></div>
-      <div className="h-4 w-6">
+      <div className="h-4 w-8"></div>
+      <div className="h-4 w-8"></div>
+      <div className="h-4 w-8">
         <p className="text-xs">Mon</p>
       </div>
-      <div className="h-4 w-6"></div>
-      <div className="h-4 w-6">
+      <div className="h-4 w-8"></div>
+      <div className="h-4 w-8">
         <p className="text-xs">Wed</p>
       </div>
-      <div className="h-4 w-6"></div>
-      <div className="h-4 w-6">
+      <div className="h-4 w-8"></div>
+      <div className="h-4 w-8">
         <p className="text-xs">Fri</p>
       </div>
-      <div className="h-4 w-6"></div>
+      <div className="h-4 w-8"></div>
     </div>
   );
 };
@@ -94,13 +94,13 @@ const DayLabels: FC = () => {
 const ChartFooter: FC = () => {
   return (
     <div className="flex gap-2">
-      <p className="text-xs">Less</p>
+      <p className="text-xs w-8">Less</p>
       <ActivityBox density="lightest" />
       <ActivityBox density="lighter" />
       <ActivityBox density="base" />
       <ActivityBox density="darker" />
       <ActivityBox density="darkest" />
-      <p className="text-xs">More</p>
+      <p className="text-xs w-8">More</p>
     </div>
   );
 };
