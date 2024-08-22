@@ -39,7 +39,7 @@ export const useCommitActivity: UseCommitActivity = (userAndRepo) => {
           >
       )
       .then((data) => {
-        /* For any case where the endpoint doesn't return an array, we consider it as an error. For instance, if we're rate-limited. */
+        /* For any case where the endpoint doesn't return an array, we consider it as an error. For instance, if we're rate limited. */
         if (!Array.isArray(data)) {
           setState({
             loading: false,

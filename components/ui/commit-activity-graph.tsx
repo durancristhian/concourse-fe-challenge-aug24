@@ -7,7 +7,7 @@ import { FC } from "react";
 import { ActivityBox } from "./activity-box";
 import { WeekActivity } from "./week-activity";
 
-/* IDEA: This could be something the user can type so we can make the chart dynamic. */
+/* IDEA: This could be something the user can type so we can have a dynamic chart. */
 const USER_AND_REPO = "facebook/react";
 
 export const CommitActivityGraph: FC = () => {
@@ -21,7 +21,7 @@ export const CommitActivityGraph: FC = () => {
   if (loading) {
     /* Note: Ideally, this would be a separated component. */
     return (
-      <p className="text-base italic">
+      <p className="italic">
         Loading commit activity for{" "}
         <span className="font-bold">{USER_AND_REPO}</span>...
       </p>
@@ -31,7 +31,7 @@ export const CommitActivityGraph: FC = () => {
   if (error) {
     /* Note: Ideally, this would be a separated component. */
     return (
-      <p className="font-bold text-base text-red-800">
+      <p className="font-bold text-red-800">
         An error has ocurred. Try again in a few minutes since you could be rate
         limited by the GitHub API.
       </p>
