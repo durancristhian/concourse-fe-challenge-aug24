@@ -2,7 +2,7 @@ import { CommitActivityGraph } from "@/components/ui/commit-activity-graph";
 
 export default function Page() {
   return (
-    <div className="bg-zinc-200 flex flex-col justify-between gap-16 min-h-screen p-8 text-neutral-800">
+    <div className="flex flex-col justify-between gap-16 min-h-screen p-8 text-neutral-800">
       <h1 className="font-bold text-2xl">
         Concourse FE Challenge by Cristhian Duran
       </h1>
