@@ -21,7 +21,7 @@ export const CommitActivityGraph: FC = () => {
   if (loading) {
     /* Note: Ideally, this would be a separated component. */
     return (
-      <p className="italic">
+      <p>
         Loading commit activity for{" "}
         <span className="font-bold">{USER_AND_REPO}</span>...
       </p>
@@ -31,7 +31,7 @@ export const CommitActivityGraph: FC = () => {
   if (error) {
     /* Note: Ideally, this would be a separated component. */
     return (
-      <p className="font-bold text-red-800">
+      <p className="font-semibold text-red-800">
         An error has ocurred. Try again in a few minutes since you could be rate
         limited by the GitHub API.
       </p>
@@ -40,8 +40,8 @@ export const CommitActivityGraph: FC = () => {
 
   return (
     <>
-      <h2 className="font-semibold text-xl">
-        Commit activity for {USER_AND_REPO}
+      <h2>
+        Commit activity for <span className="font-bold">{USER_AND_REPO}</span>
       </h2>
       <div className="my-4 overflow-x-auto pb-2">
         <div className="flex gap-2">

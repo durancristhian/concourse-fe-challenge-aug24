@@ -1,6 +1,8 @@
 # concourse-fe-challenge-aug24
 
-[Live demo](https://concourse-fe-challenge-aug24.vercel.app)
+## Live demo
+
+[https://concourse-fe-challenge-aug24.vercel.app](https://concourse-fe-challenge-aug24.vercel.app)
 
 ## Requirements
 
